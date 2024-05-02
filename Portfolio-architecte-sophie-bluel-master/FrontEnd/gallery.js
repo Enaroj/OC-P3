@@ -30,3 +30,51 @@ function generateGallery(gallery) {
 
 generateGallery(gallery);
 
+
+
+const btnNoFilter = document.querySelector("#btn-all");
+
+btnNoFilter.addEventListener("click", function () {
+    document.querySelector(".gallery").innerHTML = "";
+    generateGallery(gallery)
+    });
+
+
+const btnFilterObject = document.querySelector("#btn-obj");
+
+btnFilterObject.addEventListener("click", function() {
+    const galleryObject = gallery.filter(function(gallery) {
+        return gallery.categoryId === 1;
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateGallery(galleryObject)
+});
+
+const btnFilterAppartement = document.querySelector("#btn-app");
+
+btnFilterAppartement.addEventListener("click", function() {
+    const galleryAppartement = gallery.filter(function(gallery) {
+        return gallery.categoryId === 2;
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateGallery(galleryAppartement)
+});
+
+const btnFilterHotRes = document.querySelector("#btn-hot");
+
+btnFilterHotRes.addEventListener("click", function() {
+    const galleryHotRes = gallery.filter(function(gallery) {
+        return gallery.categoryId === 3;
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateGallery(galleryHotRes)
+});
+// const boutonFiltrer = document.querySelector(".btn-filtrer");
+
+// boutonFiltrer.addEventListener("click", function () {
+//     const piecesFiltrees = pieces.filter(function (piece) {
+//         return piece.prix <= 35;
+//     });
+//     document.querySelector(".fiches").innerHTML = "";
+//     genererPieces(piecesFiltrees);
+// });

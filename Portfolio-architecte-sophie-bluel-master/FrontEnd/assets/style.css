@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: #FFFEF8;
 }
 header {
 	display: flex;
@@ -84,6 +85,9 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
+/* ********** */
+/* Navigation */
 nav ul {
 	display: flex;
 	align-items: center;
@@ -98,6 +102,9 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
+/* ********** */
+/* Introduction */
 #introduction {
 	display: flex;
 	align-items: center;
@@ -121,6 +128,34 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+/* ********** */
+/* Gallery */
+
+.filters {
+	display: flex;
+	justify-content: center;
+	gap : 10px;
+	margin: 50px;
+}
+
+.btn {
+	background-color: transparent;
+	color: #1D6154;
+	border-color: #1D6154;
+	border-radius: 60px;
+	border-width: 1px;
+	min-width: 100px;
+	padding: 5px 10px;
+	font-family: "syne";
+	font-size: 16px;
+}
+
+.btn:focus {
+	background-color: #1D6154;
+	color: white;
+}
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
@@ -137,6 +172,9 @@ li:hover {
 	width: 100%;
 
 }
+
+/* ********** */
+/* Contact */
 #contact {
 	width: 50%;
 margin: auto;
