@@ -30,5 +30,3 @@ function generateGallery(gallery) {
 
 generateGallery(gallery);
 
-
-
