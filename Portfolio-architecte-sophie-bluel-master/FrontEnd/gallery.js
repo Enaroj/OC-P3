@@ -3,13 +3,13 @@ async function initData() {
     const reponse = await fetch("http://localhost:5678/api/works");
     // Create a json file with the elements
     const gallery = await reponse.json();
-    console.log("La galerie est récuperee");
+    console.log(gallery);
         
     // Fetch the elements in the categories API
     const reponseCat = await fetch("http://localhost:5678/api/categories");
     // Create a json file with the elements
     const categories = await reponseCat.json();
-    console.log("Les categories sont recuperees");
+    console.log(categories);
     // Call the function initUI with gallery and categories as arguments
     initUI(gallery, categories);
 }
