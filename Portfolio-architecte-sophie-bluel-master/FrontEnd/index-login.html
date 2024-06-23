@@ -15,6 +15,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style-login.css">
 	<script type="module" src="/gallery.js"></script>
+	<script type="module" src="/modal.js"></script>
 </head>
 
 <body>
@@ -51,7 +52,7 @@
 		<section id="portfolio">
 			<div class="project">
 				<h2>Mes Projets</h2>
-				<p><i class="fa-regular fa-pen-to-square"></i>modifier</p>
+				<a href="#modal1" class="js-modal"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
 			</div>
 			<div class="filters">
 				<!-- <button class="btn" id="btn-all">Tous</button>
@@ -66,7 +67,7 @@
 		</section>
 		<section id="contact">
 
-				<h2>Contact</h2>
+			<h2>Contact</h2>
 
 			<p>Vous avez un projet ? Discutons-en !</p>
 			<form action="#" method="post">
@@ -88,6 +89,22 @@
 			</ul>
 		</nav>
 	</footer>
+
+
+	<!-- Editing modal -->
+	<aside class="modal" id="modal1" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
+		<div class="modal-wrapper js-modal-stop">
+			<button class="js-modal-close" alt="Fermer la boite modale"> <i class="fa-solid fa-xmark"></i></button>
+			<h3 id="titlemodal">Galerie photo</h3>
+			<div class="gallery-modal">
+
+			</div>
+			<hr>
+			<form>
+				<button id="btnAdd" class="btn">Ajouter une photo</button>
+			</form>
+		</div>
+	</aside>
 </body>
 
 </html>
