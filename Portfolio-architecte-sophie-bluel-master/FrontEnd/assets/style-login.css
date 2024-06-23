@@ -48,18 +48,27 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
+	max-width: 1440px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 	background-color: #FFFEF8;
 }
+
 header {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	width: 100%;
 }
+
+main {
+	max-width: 1140px;
+	display: flex;
+	flex-direction: column;
+	margin: 0px 150px;
+}
+
 section {
 	margin: 50px 0
 }
@@ -77,7 +86,6 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -85,6 +93,10 @@ h2{
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154
+}
+
+h3 {
+	font-size: 26px;
 }
 
 /* ********** */
@@ -113,10 +125,11 @@ nav a {
 }
 
 .header-section {
+	max-width: 1140px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin: 40px;
+	margin: 40px 150px;
 }
 
 .edition-mode {
@@ -206,10 +219,6 @@ nav a {
 	gap: 40px;
 }
 
-.project p {
-	margin-bottom: 1.5em;
-}
-
 .project i {
 	margin-right: 15px;
 }
@@ -272,6 +281,7 @@ footer {
 	display: flex; /* Utilisation de Flexbox */
     justify-content: end; /* Alignement horizontal au centre */
     align-items: center; 
+	background-color: white;
 }
 
 /* ********** */
@@ -315,3 +325,88 @@ footer {
 	text-align: center;
 	margin-top: 20px;
 }
+
+/* ********** */
+/* Modal */
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal-wrapper {
+	overflow: auto;
+	background-color: #FFFF;
+	border-radius: 10px;
+	width: 630px;
+	padding:20px;
+	max-width: calc(100vw - 20px);
+	max-height: calc(100vh - 20px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+hr {
+	width: 420px;
+	height: 1px;
+	margin: 35px 0px;
+	background-color: #B3B3B3;
+}
+
+#btnAdd {
+	color: white;
+	background-color: #1D6154;
+	border-color: #1D6154;
+	font-size: 14px;
+	font-weight: 700;
+	width: 237px;
+	height: 36px;
+	border-style: none;
+}
+
+.js-modal-close {
+	background-color: transparent;
+	border: none;
+	align-self: flex-end;
+}
+
+.gallery-modal {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 40px 90px;
+}
+
+.gallery-modal figure {
+	position: relative;
+    display: inline-block;
+	margin: 15px 0px;
+}
+
+.gallery-modal img {
+	width: 77px;
+	height: 103px;
+
+	display: block;
+}
+
+.gallery-modal i {
+    position: absolute;
+    top: 5px; /* Adjust as needed */
+    right: 5px; /* Adjust as needed */
+    /*font-size: 2rem; /* Adjust as needed */
+    color: white; /* Change color as needed */
+    background: black; /* Optional: Add a background to the icon for better visibility */
+    padding: 5px; /* Optional: Add padding for better appearance */
+    border-radius: 10%; /* Optional: Make the icon background circular */
+}
+
+
