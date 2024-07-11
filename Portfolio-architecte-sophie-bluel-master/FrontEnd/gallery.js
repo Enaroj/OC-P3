@@ -50,7 +50,7 @@ function generateGallery(gallery) {
     }
 }
 
-function generateGalleryModal(gallery) {
+function generateGalleryModal(gallery, i) {
     for (let i = 0; i < gallery.length; i++) {
 
         const article = gallery[i];
@@ -65,14 +65,21 @@ function generateGalleryModal(gallery) {
         // Get the alternative element from the API
         imageElement.alt = article.title ?? "no description available";
         // const deleteElement = document.querySelector(".modal-figure");
+        const deleteButton = document.createElement("button");
+        deleteButton.id = "delete-btn" + i
         const deleteIcon = document.createElement("i");
         deleteIcon.classList.add('fa-solid', 'fa-trash-can');
 
         // Create the element in the DOM
         sectionPortfolio.appendChild(figureElement);
         figureElement.appendChild(imageElement);
-        figureElement.appendChild(deleteIcon);
+        figureElement.appendChild(deleteButton);
+        deleteButton.appendChild(deleteIcon);
+
+        //setUpListener(i);
     }
+
+   
 }
 
 // async function fetchCategories(gallery) {
@@ -133,6 +140,12 @@ function setupButtonListener (button, category, gallery){
     })
 }
 
+function setUpListener(gallery, i){
+    const deleteItem = document.getElementById("delete-btn" + i);
+    deleteItem.addEventListener("click", function(){
+        console.log(deleteItem)
+    })
+}
 
 // function filterGallery(categories, gallery){
 
@@ -199,6 +212,8 @@ function setupButtonListener (button, category, gallery){
 //         generateGallery(galleryHotRes)
 //     });
 // }
+
+
 
 
 initData();

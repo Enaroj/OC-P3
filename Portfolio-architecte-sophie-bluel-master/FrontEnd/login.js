@@ -38,21 +38,20 @@ function logIn() {
                 console.log(data);
                 // Store the data into local storage for future use
                 window.localStorage.setItem("token", data.token);
+                document.location.href="/index-login.html";
             })
             .catch(error => {
                 // Manage errors
                 console.error('Erreur de fetch:', error);
+                const idError = document.querySelector("#id-error");
+                idError.innerText = "Erreur dans l'identifiant ou le mot de passe."
             });
-            
-        
 
-        // if (response.ok = true) {
-        //     document.location.href="/index.html"
-        // } else {
-        //     const idError = document.querySelector("#id-error");
-        //     idError.innerText = "E-mail ou mot de passe incorrect."
-        // }
+            console.log(response)
+
     });
+
+
 
 }
 
@@ -66,4 +65,4 @@ function getToken() {
 
 
 logIn();
-//getToken();
+// getToken();

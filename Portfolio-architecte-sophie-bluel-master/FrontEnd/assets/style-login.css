@@ -3,19 +3,87 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -23,34 +91,54 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
-ol, ul {
+
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /** end reset css**/
 body {
 	max-width: 1440px;
-	margin:auto;
-	font-family: 'Work Sans' ;
+	margin: auto;
+	font-family: 'Work Sans';
 	font-size: 14px;
 	background-color: #FFFEF8;
 }
@@ -73,7 +161,7 @@ section {
 	margin: 50px 0
 }
 
-h1{
+h1 {
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
@@ -82,13 +170,13 @@ h1{
 	color: #B1663C
 }
 
-h1 > span {
+h1>span {
 	font-family: 'Work Sans';
-	font-size:10px;
+	font-size: 10px;
 	letter-spacing: 0.1em;
 }
 
-h2{
+h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
@@ -107,6 +195,7 @@ nav ul {
 	list-style-type: none;
 
 }
+
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
@@ -120,7 +209,7 @@ nav a {
 	text-decoration: none;
 }
 
-#navLogin {
+#nav-login {
 	font-weight: 600;
 }
 
@@ -148,9 +237,11 @@ nav a {
 	display: flex;
 	align-items: center;
 }
+
 #introduction figure {
 	flex: 1
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -160,6 +251,7 @@ nav a {
 #introduction article {
 	flex: 1
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -174,7 +266,7 @@ nav a {
 .filters {
 	display: flex;
 	justify-content: center;
-	gap : 10px;
+	gap: 10px;
 	margin: 50px;
 }
 
@@ -199,6 +291,7 @@ nav a {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -223,23 +316,30 @@ nav a {
 	margin-right: 15px;
 }
 
+.project a {
+	margin-bottom: 30px;
+}
+
 
 /* ********** */
 /* Contact */
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
-#contact > * {
+
+#contact>* {
 	text-align: center;
 
 }
-#contact h2{
+
+#contact h2 {
 	margin-bottom: 20px;
 }
+
 #contact form {
 	text-align: left;
-	margin-top:30px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -250,23 +350,25 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+input[type="submit"] {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin: 2em auto;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
 
 footer nav ul {
@@ -278,9 +380,11 @@ footer nav ul {
 footer {
 	height: 60px;
 	width: 100%;
-	display: flex; /* Utilisation de Flexbox */
-    justify-content: end; /* Alignement horizontal au centre */
-    align-items: center; 
+	display: flex;
+	/* Utilisation de Flexbox */
+	justify-content: end;
+	/* Alignement horizontal au centre */
+	align-items: center;
 	background-color: white;
 }
 
@@ -291,16 +395,19 @@ footer {
 	margin: auto;
 	margin-bottom: 120px;
 }
-#login > * {
+
+#login>* {
 	text-align: center;
 
 }
-#login h2{
+
+#login h2 {
 	margin-bottom: 20px;
 }
+
 #login form {
 	text-align: left;
-	margin-top:30px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -311,6 +418,7 @@ footer {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #login label {
 	margin: 2em 0 1em 0;
 }
@@ -346,7 +454,7 @@ footer {
 	background-color: #FFFF;
 	border-radius: 10px;
 	width: 630px;
-	padding:20px;
+	padding: 20px;
 	max-width: calc(100vw - 20px);
 	max-height: calc(100vh - 20px);
 	display: flex;
@@ -361,7 +469,7 @@ hr {
 	background-color: #B3B3B3;
 }
 
-#btnAdd {
+#btn-add {
 	color: white;
 	background-color: #1D6154;
 	border-color: #1D6154;
@@ -372,10 +480,17 @@ hr {
 	border-style: none;
 }
 
-.js-modal-close {
+.js-modal-close,
+.js-modal-back {
 	background-color: transparent;
 	border: none;
 	align-self: flex-end;
+}
+
+.modal-nav {
+	display: flex;
+	align-self: stretch;
+	gap: 580px;
 }
 
 .gallery-modal {
@@ -387,26 +502,82 @@ hr {
 
 .gallery-modal figure {
 	position: relative;
-    display: inline-block;
+	display: inline-block;
 	margin: 15px 0px;
 }
 
 .gallery-modal img {
 	width: 77px;
 	height: 103px;
-
 	display: block;
 }
 
-.gallery-modal i {
-    position: absolute;
-    top: 5px; /* Adjust as needed */
-    right: 5px; /* Adjust as needed */
-    /*font-size: 2rem; /* Adjust as needed */
-    color: white; /* Change color as needed */
-    background: black; /* Optional: Add a background to the icon for better visibility */
-    padding: 5px; /* Optional: Add padding for better appearance */
-    border-radius: 10%; /* Optional: Make the icon background circular */
+.gallery-modal button {
+	position: absolute;
+	top: 5px;
+	/* Adjust as needed */
+	right: 5px;
+	/* Adjust as needed */
+	/*font-size: 2rem; /* Adjust as needed */
+	color: white;
+	/* Change color as needed */
+	background: black;
+	/* Optional: Add a background to the icon for better visibility */
+	padding: 5px;
+	/* Optional: Add padding for better appearance */
+	border-radius: 10%;
+	/* Optional: Make the icon background circular */
 }
 
+.div-add-photo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: #E8F1F6;
+	height: 170px;
+	width: 420px;
+	margin: 30px 0px;
+}
 
+.div-add-photo i {
+	color: #CBD6DC;
+	font-size: 76px;
+}
+
+.div-add-photo button {
+	color: #306685;
+	border-radius: 50px;
+	background-color: #CBD6DC;
+	border-style: none;
+	font-size: 14px;
+	width: 173px;
+	padding: 10px;
+}
+
+.div-add-photo p {
+	font-size: 10px;
+}
+
+.add-photo-modal form {
+	display: flex;
+	flex-direction: column;
+}
+
+.add-photo-modal input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin: 5px 0px;
+}
+
+.add-photo-modal label {
+	margin: 5px 0px;
+}
+
+#btn-ok  {
+	background-color: #B3B3B3;
+	border-style: none;
+	width: 237px;
+}
