@@ -493,26 +493,26 @@ hr {
 	gap: 580px;
 }
 
-.gallery-modal {
+#gallery-modal {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	margin: 40px 90px;
 }
 
-.gallery-modal figure {
+#gallery-modal figure {
 	position: relative;
 	display: inline-block;
 	margin: 15px 0px;
 }
 
-.gallery-modal img {
+#gallery-modal img {
 	width: 77px;
 	height: 103px;
 	display: block;
 }
 
-.gallery-modal button {
+#gallery-modal button {
 	position: absolute;
 	top: 5px;
 	/* Adjust as needed */
@@ -545,7 +545,7 @@ hr {
 	font-size: 76px;
 }
 
-.div-add-photo button {
+.div-add-photo span {
 	color: #306685;
 	border-radius: 50px;
 	background-color: #CBD6DC;
@@ -559,12 +559,16 @@ hr {
 	font-size: 10px;
 }
 
-.add-photo-modal form {
+.div-add-photo input[type=file]{
+	display: none;
+}
+
+#add-photo-modal form {
 	display: flex;
 	flex-direction: column;
 }
 
-.add-photo-modal input {
+#add-photo-modal input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -572,7 +576,7 @@ hr {
 	margin: 5px 0px;
 }
 
-.add-photo-modal label {
+#add-photo-modal label {
 	margin: 5px 0px;
 }
 

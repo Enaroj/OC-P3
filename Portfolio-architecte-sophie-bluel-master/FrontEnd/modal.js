@@ -1,3 +1,6 @@
+import { initData } from "./gallery-login.js"
+//import { getToken } from "./login.js"
+
 // This function manage the global behavior of the modal box, using keyboard or mouse
 function modalOpenClose() {
 
@@ -13,7 +16,7 @@ function modalOpenClose() {
     const openModal = function (event) {
         event.preventDefault()
         console.log("le lien a été cliqué")
-        getBack()
+        initiateModalContent()
         // Fetch the element "href" in the page
         modal = document.querySelector(event.target.getAttribute("href"))
         // Select all the element focusable that are into the modal box and put in a table
@@ -106,52 +109,76 @@ function modalOpenClose() {
 
 }
 
-function addPhoto() {
+function setAddPhotoModal() {
+    // Listening to the "Ajouter une photo" button inside the modal box
     const addButton = document.querySelector("#btn-add")
     addButton.addEventListener("click", function (event) {
         event.preventDefault()
         console.log("le bouton ajouter a été cliqué");
 
+        // Changing the title of the modal box
         document.querySelector("h3").innerText = "Ajout photo";
-        document.querySelector(".gallery-modal").style.display = "none";
-        document.querySelector(".add-photo-modal").style.display = null
+        // Changing the id of the div of the inside content of the modal box
+        document.querySelector(".inner-modal").id = "add-photo-modal";
+        // Emptying the HTML of that div
+        document.querySelector(".inner-modal").innerHTML = ""
 
+        // Revealing the back button
         const hideButton = document.querySelector(".fa-arrow-left");
         hideButton.style.display = null
+        // Listening to the click on that button
         hideButton.addEventListener("click", function () {
             console.log("le bouton retour a été cliqué");
-            getBack();
+            // Recreating the first window of the modal box
+            initiateModalContent();
         })
 
+        // Changing the content and idea of the bottom button
         addButton.innerText = "Valider";
         addButton.id = "btn-ok";
 
-        const sectionAddPhoto = document.querySelector(".add-photo-modal");
-        console.log(sectionAddPhoto.value)
-        if (sectionAddPhoto.firstChild) {
+        // Creating the content of the second window of the modal box
+        const sectionAddPhoto = document.querySelector("#add-photo-modal");
+        console.log(sectionAddPhoto)
+        //if (sectionAddPhoto.firstChild) {
             
-            // Create the figure element
+            // Create the div element to contain the first part of the window
             const divAddPhoto = document.createElement("div");
             divAddPhoto.classList.add('div-add-photo');
             const imageIcon = document.createElement("i");
             imageIcon.classList.add('fa-regular', 'fa-image');
-            const AddPhotoInput = document.createElement("input");
-            AddPhotoInput.innerText = "+ Ajouter photo";
-            AddPhotoInput.type = "file"
-            AddPhotoInput.accept = ".jpg, .png"
-            const AddPhotoText = document.createElement("p");
-            AddPhotoText.innerText =  "jpg, png : 4 mo max"
-    
+
+            // Create a label element to contain a span and an input in order to upload a new photo. 
+            // The input is hidden and the span is set to look like a button while acting like an input. 
+            const addPhotoLabel = document.createElement("label");
+            addPhotoLabel.for = "images";
+            const addPhotoButton = document.createElement("span");
+            addPhotoButton.innerText = " + Ajouter photo";
+            // Setting the input
+            const addPhotoInput = document.createElement("input");
+            addPhotoInput.type = "file";
+            addPhotoInput.accept = ".jpg, .png";
+            addPhotoInput.id = "images";
+
+            // Adding a description about what extensions are supported by the input
+            const addPhotoText = document.createElement("p");
+            addPhotoText.innerText =  "jpg, png : 4 mo max"
+
+            // Creating all the elements in the DOM
             sectionAddPhoto.appendChild(divAddPhoto);
             divAddPhoto.appendChild(imageIcon);
-            divAddPhoto.appendChild(AddPhotoInput);
-            divAddPhoto.appendChild(AddPhotoText);
-    
+            divAddPhoto.appendChild(addPhotoLabel);
+            addPhotoLabel.appendChild(addPhotoButton)
+            addPhotoLabel.appendChild(addPhotoInput);
+            divAddPhoto.appendChild(addPhotoText);
+
+            // Adding a second form part of the window in order to categories the photo uploaded
             const formAddPhoto = document.createElement("form");
             formAddPhoto.method = "post";
     
             sectionAddPhoto.appendChild(formAddPhoto);
-    
+
+            // Adding a title part
             const photoTitlelabel = document.createElement("label");
             photoTitlelabel.innerText = "Titre";
             const photoTitle = document.createElement("input");
@@ -161,7 +188,8 @@ function addPhoto() {
     
             formAddPhoto.appendChild(photoTitlelabel);
             formAddPhoto.appendChild(photoTitle);
-    
+
+            // Adding a category part
             const photoCatlabel = document.createElement("label");
             photoCatlabel.innerText = "Catégorie";
             const photoCat = document.createElement("input");
@@ -171,21 +199,36 @@ function addPhoto() {
     
             formAddPhoto.appendChild(photoCatlabel);
             formAddPhoto.appendChild(photoCat);
-        } 
+        //} 
 
     })
 }
 
-function getBack() {
-    console.log("la fonction getBack est lancée")
+function initiateModalContent() {
+    console.log("la fonction initiateModal est lancée")
 
+    // Change the title of the modal box
     document.querySelector("h3").innerText = "Galerie photo";
-    document.querySelector(".gallery-modal").style.display = null
-    document.querySelector(".add-photo-modal").style.display = "none"
+    // Change the id of the div in order to allow the generation of the gallery
+    document.querySelector(".inner-modal").id = "gallery-modal";
+    // Empty the div from previous content
+    document.querySelector(".inner-modal").innerHTML = "";
+    
+    // Checking what should I call in the if section below.
+    const div = document.querySelector(".inner-modal")
+    const divHTML = div.innerHTML
+    console.log(div);
+    console.log(divHTML)
+    // Generate the modal gallery if the div is empty
+    if (divHTML === "") {
+        initData()
+    }
 
+    // Hide the return button
     const hideButton = document.querySelector(".fa-arrow-left");
     hideButton.style.display = "none";
 
+    // Changing the text of the bottom button if it's not changed yet.
     const addButton = document.querySelector("#btn-ok");
     if (addButton !== null) {
         addButton.innerText = "Ajouter une photo";
@@ -194,5 +237,5 @@ function getBack() {
 
 }
 
-modalOpenClose()
-addPhoto()
+modalOpenClose(initData())
+setAddPhotoModal()
