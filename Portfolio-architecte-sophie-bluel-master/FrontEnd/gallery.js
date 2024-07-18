@@ -18,8 +18,6 @@ function initUI(gallery, categories){
     // call the function generateGallery
     generateGallery(gallery);
 
-    generateGalleryModal(gallery);
-
     // call the function to create filter buttons and generate a filtered gallery
     createFilterButton(categories, gallery);
 }
@@ -49,19 +47,6 @@ function generateGallery(gallery) {
         figureElement.appendChild(captionFigure);
     }
 }
-
-
-// async function fetchCategories(gallery) {
-//     // Fetch the elements from the API categories
-//     const reponse = await fetch("http://localhost:5678/api/categories");
-//     // Create a json file with the elements
-//     const categories = await reponse.json();
-//     // Rajouter un test d'erreur
-    
-//     // const categories = Set(); 
-
-//     // filterGallery(categories);
-// }
 
 function createFilterButton(categories, gallery) {
 
@@ -115,75 +100,6 @@ function setUpListener(gallery, i){
         console.log(deleteItem)
     })
 }
-
-// function filterGallery(categories, gallery){
-
-//         const selectFilter = document.querySelector(".btn");
-//         selectFilter.addEventListener("click", function() {
-//             console.log("le bouton est sélectionné.");
-//             document.querySelector(".gallery").innerHTML = "";
-//             fetchGallery();
-//         })
-
-//         for (i = 0; i < categories.length; i++){
-//             const article = categories[i]
-
-//         }
-//         const btnFilterObject = document.querySelector("#btn-1");
-
-//         btnFilterObject.addEventListener("click", function () {
-//             console.log("Le bouton objet est sélectionné");
-//         // const galleryObject = gallery.filter(function (gallery) {
-//         //     return gallery.categoryId === 1;
-//         // });
-//         // document.querySelector(".gallery").innerHTML = "";
-//         // generateGalleryGallery(galleryObject)
-//     });
-// }
-
-// function filterGallery(categories) {
-    
-//     const btnNoFilter = document.querySelector("#btn-all");
-
-//     btnNoFilter.addEventListener("click", function () {
-//         document.querySelector(".gallery").innerHTML = "";
-//         generateGallery(gallery)
-//     });
-
-
-//     const btnFilterObject = document.querySelector("#btn-obj");
-
-//     btnFilterObject.addEventListener("click", function () {
-//         const galleryObject = gallery.filter(function (gallery) {
-//             return gallery.categoryId === 1;
-//         });
-//         document.querySelector(".gallery").innerHTML = "";
-//         generateGallery(galleryObject)
-//     });
-
-//     const btnFilterAppartement = document.querySelector("#btn-app");
-
-//     btnFilterAppartement.addEventListener("click", function () {
-//         const galleryAppartement = gallery.filter(function (gallery) {
-//             return gallery.categoryId === 2;
-//         });
-//         document.querySelector(".gallery").innerHTML = "";
-//         generateGallery(galleryAppartement)
-//     });
-
-//     const btnFilterHotRes = document.querySelector("#btn-hot");
-
-//     btnFilterHotRes.addEventListener("click", function () {
-//         const galleryHotRes = gallery.filter(function (gallery) {
-//             return gallery.categoryId === 3;
-//         });
-//         document.querySelector(".gallery").innerHTML = "";
-//         generateGallery(galleryHotRes)
-//     });
-// }
-
-
-
 
 initData();
 
