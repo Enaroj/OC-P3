@@ -1,10 +1,11 @@
+
 export async function initData() {
     // Fetch the elements in the works API
     const reponse = await fetch("http://localhost:5678/api/works");
     // Create a json file with the elements
     const gallery = await reponse.json();
     console.log(gallery);
-        
+
     // Fetch the elements in the categories API
     const reponseCat = await fetch("http://localhost:5678/api/categories");
     // Create a json file with the elements
@@ -14,14 +15,17 @@ export async function initData() {
     initUI(gallery, categories);
 }
 
-export function initUI(gallery, categories){
+function initUI(gallery, categories) {
     // call the function generateGallery
     generateGallery(gallery);
 
     generateGalleryModal(gallery);
 }
 
-export function generateGallery(gallery) {
+function generateGallery(gallery) {
+    const sectionGallery = document.querySelector(".gallery");
+    sectionGallery.innerHTML = "";
+
     for (let i = 0; i < gallery.length; i++) {
 
         const article = gallery[i];
@@ -47,11 +51,11 @@ export function generateGallery(gallery) {
     }
 }
 
-export function generateGalleryModal(gallery, i) {
-// Get the DOM element where to put the images
-const sectionPortfolio = document.querySelector("#gallery-modal");
-sectionPortfolio.innerHTML = "";
-    
+function generateGalleryModal(gallery, i) {
+    // Get the DOM element where to put the images
+    const sectionPortfolio = document.querySelector("#gallery-modal");
+    sectionPortfolio.innerHTML = "";
+
     for (let i = 0; i < gallery.length; i++) {
 
         const article = gallery[i];
@@ -66,7 +70,7 @@ sectionPortfolio.innerHTML = "";
         imageElement.alt = article.title ?? "no description available";
         // const deleteElement = document.querySelector(".modal-figure");
         const deleteButton = document.createElement("button");
-        deleteButton.id = "deleteBtn" + i
+        deleteButton.id = "delete-btn" + i
         const deleteIcon = document.createElement("i");
         deleteIcon.classList.add('fa-solid', 'fa-trash-can');
 
@@ -76,9 +80,58 @@ sectionPortfolio.innerHTML = "";
         figureElement.appendChild(deleteButton);
         deleteButton.appendChild(deleteIcon);
     }
+    setupDeleteListener(gallery)
 
-   
+
 }
+
+
+function setupDeleteListener(gallery) {
+
+    console.log(gallery.length)
+    for (let i = 0; i < gallery.length; i++) {
+
+        const deleteButton = document.querySelector("#delete-btn" + i)
+
+        deleteButton.addEventListener("click", function () {
+            console.log("le bouton poubelle a été cliqué")
+            const deleteId = gallery[i].id 
+            console.log(deleteId)
+            deleteItem(deleteId)
+        })
+    }
+}
+
+export function getToken() {
+    const getItemToken = window.localStorage.getItem("token");
+    console.log(getItemToken) // mettre à jour la galerie 
+    return getItemToken
+}
+
+
+function deleteItem(deleteId) {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + getToken());
+
+    const requestOptions = {
+        method: "DELETE",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    fetch("http://localhost:5678/api/works/" + deleteId, requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.error(error));
+
+    document.querySelector("#gallery-modal").innerHTML = "";
+    document.querySelector(".gallery").innerHTML = "";
+    initData();
+}
+
+
+
+
 
 initData();
 

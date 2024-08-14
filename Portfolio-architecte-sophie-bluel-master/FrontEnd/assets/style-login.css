@@ -617,3 +617,10 @@ select {
 	display: block;
 	height: 169px ;
 }
+
+#add-photo-error-message {
+	color: red;
+	font-weight: 700;
+	display: flex;
+	justify-content: center;
+}

@@ -58,10 +58,7 @@ function logIn() {
 
 
 
-function getToken() {
-    const getItemToken = window.localStorage.getItem("token");
-    console.log(getItemToken)
-}
+
 
 
 logIn();

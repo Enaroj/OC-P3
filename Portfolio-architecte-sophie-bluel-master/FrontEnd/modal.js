@@ -14,7 +14,7 @@ function initModal() {
     let previouslyFocusElement = null
 
     // This constant manage the opening of the modal box
-    
+
     const openModal = function (event) {
         event.preventDefault()
         console.log("le lien a été cliqué")
@@ -278,23 +278,37 @@ function addForm() {
 
 }
 
-function setUpFormListener () {
+function setUpFormListener() {
     const form = document.getElementById('my-form');
 
     const elementError = document.createElement("p");
     elementError.id = "add-photo-error-message";
     form.appendChild(elementError);
 
-    form.addEventListener('change', function() {
+    form.addEventListener('change', function () {
         const fileInput = document.querySelector('input[type="file"]');
         console.log(fileInput.value)
         const titleInput = document.getElementById('title-photo');
         console.log(titleInput.value)
         const categoryInput = document.querySelector('#cat-photo');
         console.log(categoryInput.value)
+        const fileValue = fileInput.value
+        const extFile = fileValue.split('.').pop();
+        console.log(extFile);
+        const file = fileInput.files[0];
+        console.log(file);
+        const fileSize = file.size;
+        console.log(fileSize);
+        const fileSizeInKB = (fileSize / 1024);
+        console.log(fileSizeInKB);
 
 
-        if (fileInput.value != "" && titleInput.value != "" && categoryInput.value != "Tous") {
+
+        if (!["png", "PNG", "jpg", "JPG", "jpeg", "JPEG"].includes(extFile)) {
+            elementError.innerHTML = "Le format du fichier n'est pas bon"
+        } if (fileSizeInKB > 4000) {
+            elementError.innerHTML = "Le fichier est trop volumineux"
+        } if (fileInput.value != "" && titleInput.value != "" && categoryInput.value != "Tous") {
             console.log("Tout est en règle vous pouvez circuler");
             document.getElementById("btn-ok").disabled = false;
             document.getElementById("btn-ok").id = "btn-ok-valide"; // activer le bouton : done !
@@ -313,12 +327,12 @@ function setUpFormListener () {
 }
 
 function setupSubmitListener() {
-    const form = document.getElementById('my-form') 
+    const form = document.getElementById('my-form')
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
         console.log("le bouton submit a été cliqué")
-        addItemtoAPI();      
+        addItemtoAPI();
     });
 
 }
@@ -359,8 +373,8 @@ function addItemtoAPI() {
     const form = document.getElementById('my-form') // comment ne pas écrire deux fois cette ligne ? (voir setUpFormListener)
 
 
-    
-    
+
+
     const myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + getToken());
 
@@ -388,13 +402,13 @@ function addItemtoAPI() {
         .then((response) => response.text())
         .then((result) => {
             console.log(result);
-            //initModal(closeModal());
+            document.querySelector('.modal').style.display = "none";
             initModalContent();
             initData();
         })
         .catch((error) => {
             console.error(error);
-            elementError.innerText = "Tous les champs doivent être remplis";
+            elementError.innerText = "Une erreur s'est produite.";
         })
 }
 
@@ -418,7 +432,7 @@ function setAddPhotoModal() {
 
         displayMiniature()
 
-        setUpFormListener ()
+        setUpFormListener()
         setupSubmitListener()
 
     });
