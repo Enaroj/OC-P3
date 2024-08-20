@@ -182,7 +182,7 @@ function addNewPhoto(formAddPhoto) {
     addPhotoInput.id = "images";
     // Adding a description about what extensions are supported by the input
     const addPhotoText = document.createElement("p");
-    addPhotoText.innerText = "jpg, png : 4 mo max";
+    addPhotoText.innerText = "jpg, png : 4mo max";
     addPhotoText.id = "p-image"
 
     // Create a div into the form to manage the input type file
@@ -221,10 +221,10 @@ function addPhotoCategory(formAddPhoto) {
     photoCat.name = "cat-photo";
     photoCat.id = "cat-photo";
     const options = [
-        { value: 'Tous', text: '' },
-        { value: 'Objet', text: 'Objet' },
-        { value: 'Appartements', text: 'Appartements' },
-        { value: 'Hotels-Restaurants', text: 'Hotels & Restaurants' },
+        { value: '', text: '' },
+        { value: '1', text: 'Objet' },
+        { value: '2', text: 'Appartements' },
+        { value: '3', text: 'Hotels & Restaurants' },
     ];
     options.forEach(optionData => {
         const optionElement = document.createElement('option');
@@ -308,7 +308,7 @@ function setUpFormListener() {
             elementError.innerHTML = "Le format du fichier n'est pas bon"
         } if (fileSizeInKB > 4000) {
             elementError.innerHTML = "Le fichier est trop volumineux"
-        } if (fileInput.value != "" && titleInput.value != "" && categoryInput.value != "Tous") {
+        } if (fileInput.value != "" && titleInput.value != "" && categoryInput.value != "") {
             console.log("Tout est en règle vous pouvez circuler");
             document.getElementById("btn-ok").disabled = false;
             document.getElementById("btn-ok").id = "btn-ok-valide"; // activer le bouton : done !
@@ -383,13 +383,13 @@ function addItemtoAPI() {
     console.log('la valeur de l"input est ', fileInput.value)
     const file = fileInput.files[0];
     const titleInput = document.getElementById('title-photo').value;
-    const categoryInput = document.querySelector('#cat-photo').selectedIndex;
+    const categoryInput = document.querySelector('#cat-photo').value;
     console.log(categoryInput)
 
 
     formdata.append("image", file /*, "/path/to/file"*/);
     formdata.append("title", titleInput);
-    formdata.append("category", categoryInput);
+    formdata.append("category", Number(categoryInput));
 
     const requestOptions = {
         method: "POST",
