@@ -3,13 +3,11 @@ async function initData() {
     const reponse = await fetch("http://localhost:5678/api/works");
     // Create a json file with the elements
     const gallery = await reponse.json();
-    console.log(gallery);
         
     // Fetch the elements in the categories API
     const reponseCat = await fetch("http://localhost:5678/api/categories");
     // Create a json file with the elements
     const categories = await reponseCat.json();
-    console.log(categories);
     // Call the function initUI with gallery and categories as arguments
     initUI(gallery, categories);
 }
@@ -48,6 +46,7 @@ function generateGallery(gallery) {
     }
 }
 
+// Dynamic creation of the filter buttons
 function createFilterButton(categories, gallery) {
 
     // Get the DOM element where to put the buttons
@@ -82,22 +81,15 @@ function createFilterButton(categories, gallery) {
         }
 }
 
+// Listen to the filter buttons being clicked in order to filter the gallery displayed
 function setupButtonListener (button, category, gallery){
     button.addEventListener("click", function() {
-        console.log("le bouton est sélectionné. " + category);
         document.querySelector(".gallery").innerHTML = "";
         const galleryObject = gallery.filter(function (gallery) {
             return gallery.categoryId === category + 1;
         });
         document.querySelector(".gallery").innerHTML = "";
         generateGallery(galleryObject)
-    })
-}
-
-function setUpListener(gallery, i){
-    const deleteItem = document.getElementById("delete-btn" + i);
-    deleteItem.addEventListener("click", function(){
-        console.log(deleteItem)
     })
 }
 
