@@ -1,5 +1,5 @@
-import { initData } from "./gallery-login.js";
-import { getToken } from "./gallery-login.js";
+import { initData } from "./gallery.js";
+import { getToken } from "./gallery.js";
 
 // This function manage the global behavior of the modal box, using keyboard or mouse
 function initModal() {
@@ -385,13 +385,20 @@ function addItemtoAPI() {
 
     // Fetch the API
     fetch("http://localhost:5678/api/works/", requestOptions)
-        .then((response) => response.text())
-        .then((result) => {
+        .then(response => {
+            // Verify is the response is ok
+            if (!response.ok) {
+                throw new Error('Erreur lors de la récupération des données');
+            }
+            // Transform the data into JSON
+            return response.json();
+        })
+        .then(() => {
             document.querySelector('.modal').style.display = "none";
             initModalContent();
             initData();
         })
-        .catch((error) => {
+        .catch(() => {
             elementError.innerText = "Une erreur s'est produite.";
         })
 }

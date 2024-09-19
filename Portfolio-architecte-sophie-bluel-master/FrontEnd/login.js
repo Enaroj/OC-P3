@@ -30,7 +30,7 @@ function logIn() {
             .then(data => {
                 // Store the data into local storage for future use
                 window.localStorage.setItem("token", data.token);
-                document.location.href="/index-login.html";
+                document.location.href="/index.html";
             })
             .catch(error => {
                 // Manage errors
