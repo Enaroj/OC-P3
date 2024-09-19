@@ -95,9 +95,9 @@ function createFilterButton(categories, gallery) {
 function updateButton(button){
     const divFilter = document.querySelector(".filters");
     const buttons = divFilter.querySelectorAll("button");
-    buttons.forEach(salade => {
-        console.log(salade);
-        salade.className = "btn";
+    buttons.forEach(buttonFilt => {
+        console.log(buttonFilt);
+        buttonFilt.className = "btn";
         button.className = "btn-focus"
     });
 }
